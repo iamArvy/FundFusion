@@ -6,13 +6,13 @@
     </div>
     <ul>
       <li v-for="(item, index) in navs" :key="index">
-        <RouterLink to="/">{{ item }}</RouterLink>
+        <RouterLink :to="item.route">{{ item.name }}</RouterLink>
       </li>
     </ul>
     <div id="inputs">
-      <SingleInput id="search" placeholder="Search">
+      <!-- <SingleInput id="search" placeholder="Search">
         <template #icon>O</template>
-      </SingleInput>
+      </SingleInput> -->
       <img src="../assets/userImg.png" alt="" />
     </div>
   </section>
@@ -22,7 +22,14 @@
 import SingleInput from './Form/SingleInput.vue'
 import LogoImg from './LogoImg.vue'
 
-const navs = ['home', 'about us', 'projects', 'contact', 'blog']
+const navs = [
+  { name: 'home', route: '/' },
+  { name: 'about us', route: '/about' },
+  { name: 'featured', route: '/featured' },
+  { name: 'projects', route: '/projects' },
+  { name: 'contact', route: '/contact' },
+  { name: 'blog', route: '/blog' },
+]
 </script>
 
 <style scoped>
@@ -33,7 +40,7 @@ img {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-end;
 }
 #search {
   /* width: 100px; */

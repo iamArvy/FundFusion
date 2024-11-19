@@ -17,7 +17,17 @@ const router = createRouter({
     {
       path: '/auth',
       name: 'auth',
-      component: () => import('../views/Authentication/AuthPage.vue'),
+      component: () => import('../views/AuthView.vue'),
+    },
+    {
+      path: '/featured',
+      name: 'featured',
+      component: () => import('../views/FeatureView.vue'),
+    },
+    {
+      path: '/projects',
+      name: 'projects',
+      component: () => import('../views/ProjectsView.vue'),
     },
     // {
     //   path: '/profile',

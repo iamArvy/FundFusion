@@ -18,6 +18,7 @@ form {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 100%;
   /* background-color: red; */
 }
 
@@ -27,15 +28,21 @@ input {
   padding: 0 10px;
   outline: none;
   font-size: 16px;
+  flex: 1;
 }
 .input {
   background-color: transparent;
-  border: 1px solid var(--grey);
+  border: 1px solid var(--secondary);
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-radius: 20px;
+  border-radius: 6px;
   padding: 5px;
   gap: 2px;
+  /* width: 100%; */
+  flex: 1;
+}
+input::placeholder {
+  color: black;
 }
 </style>

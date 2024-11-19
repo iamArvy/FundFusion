@@ -2,26 +2,26 @@
   <main>
     <LogoImg />
     <div class="authType">
-      <SecondaryButton style="width: 200px" @click="login = true" :active="login"
-        >Sign In</SecondaryButton
+      <MainButton secondary style="width: 200px" @click="login = true" :active="login"
+        >Sign In</MainButton
       >
-      <SecondaryButton style="width: 200px" @click="login = false" :active="!login"
-        >Sign Up</SecondaryButton
+      <MainButton secondary style="width: 200px" @click="login = false" :active="!login"
+        >Sign Up</MainButton
       >
     </div>
     <AuthForm v-if="login">
       <FormInput type="email" placeholder="Email" />
       <FormInput type="password" placeholder="Password" />
-      <PrimaryButton style="width: 200px">Sign In</PrimaryButton>
+      <MainButton primary style="width: 200px">Sign In</MainButton>
     </AuthForm>
     <AuthForm v-if="!login">
       <FormInput type="email" placeholder="Email" />
       <FormInput type="password" placeholder="Password" />
-      <PrimaryButton style="width: 200px">Sign Up</PrimaryButton>
+      <MainButton primary style="width: 200px">Sign Up</MainButton>
     </AuthForm>
     <div class="authButtons">
-      <AuthButton>Continue with Google</AuthButton>
-      <AuthButton>Continue with Facebook</AuthButton>
+      <MainButton auth>Continue with Google</MainButton>
+      <MainButton auth>Continue with Facebook</MainButton>
     </div>
     <div class="authLinks">
       <router-link to="/">Forgot your password?</router-link>
@@ -32,14 +32,12 @@
 </template>
 
 <script setup lang="ts">
-import PrimaryButton from '@/components/Buttons/PrimaryButton.vue'
-import SecondaryButton from '@/components/Buttons/SecondaryButton.vue'
+import MainButton from '@/components/MainButton.vue'
 import LogoImg from '@/components/LogoImg.vue'
 import { RouterLink } from 'vue-router'
 import { ref } from 'vue'
 import AuthForm from '@/components/Form/AuthForm.vue'
 import FormInput from '@/components/Form/FormInput.vue'
-import AuthButton from '@/components/Buttons/AuthButton.vue'
 
 const login = ref<boolean>(true)
 </script>

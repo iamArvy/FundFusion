@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import SecondaryButton from '@/components/Buttons/SecondaryButton.vue';
-import TheWelcome from '../components/TheWelcome.vue'
-import PrimaryButton from '@/components/Buttons/PrimaryButton.vue';
 import SectionComponent from '@/components/Section/SectionComponent.vue';
 import { ref } from 'vue';
+import MainButton from '@/components/MainButton.vue';
 
 const campaignDivs = [
   {
@@ -106,15 +104,15 @@ const changeCampaign = (index:number) => {
           <td>{{ item.name }}</td>
           <td>${{ item.amount }}.00</td>
           <td>{{ item.comment }}!</td>
-          <td><PrimaryButton class="tbutton">{{ item.action }}</PrimaryButton></td>
+          <td><MainButton primary class="tbutton">{{ item.action }}</MainButton></td>
         </tr>
       </table>
     </SectionComponent>
     <SectionComponent header="featured campaigns" center id="campaigns">
       <nav>
-        <SecondaryButton v-for="(nav, index) in campaignNavs" :key="index" :active="currentCampaign === index" @click="changeCampaign(index)">
+        <MainButton secondary v-for="(nav, index) in campaignNavs" :key="index" :active="currentCampaign === index" @click="changeCampaign(index)">
           {{ nav }}
-        </SecondaryButton>
+        </MainButton>
       </nav>
     </SectionComponent>
     <SectionComponent id="campaignDivs">
@@ -122,7 +120,7 @@ const changeCampaign = (index:number) => {
         <li v-for="(item, index) in campaignDivs" :key="index">
         <h1>{{ item.header }}</h1>
         <p>{{ item.content }}</p>
-        <PrimaryButton>{{ item.button }}</PrimaryButton>
+        <MainButton primary>{{ item.button }}</MainButton>
         </li>
       </ul>
     </SectionComponent>

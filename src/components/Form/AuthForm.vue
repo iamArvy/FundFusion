@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import PrimaryButton from '@/components/Buttons/PrimaryButton.vue'
+import PrimaryButton from '@/components/MainButton.vue'
 import router from '@/router'
 
 const login = () => {

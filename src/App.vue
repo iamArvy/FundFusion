@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
 import { RouterView } from 'vue-router'
-// import { useLoadingStore } from './stores/loading'
-// @ts-ignore
 import HeaderSection from './components/HeaderSection.vue'
 import FooterSection from './components/FooterSection.vue'
 import { computed } from 'vue'
@@ -11,45 +9,9 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 
 const showHeaderAndFooter = computed(() => route.name !== 'auth')
-// import MyLoader from './components/MyLoader.vue'
-
-// Use the loading store
-// Use the loading store
-// const loader = useLoadingStore()
-// const dialog = ref<HTMLDialogElement | null>(null) // Dialog reference
-
-// Watch for changes in the store's loading state
-// watch(
-//   () => loader.loading,
-//   (newLoading) => {
-//     console.log('Loading state changed:', newLoading) // Debugging line
-//     if (newLoading) {
-//       document.body.style.overflow = 'hidden'
-//       dialog.value?.showModal()
-//     } else {
-//       document.body.style.overflow = 'auto' // Change to 'auto' for normal scrolling
-//       setTimeout(() => {
-//         dialog.value?.close()
-//       }, 200)
-//     }
-//   }
-// )
-
-// // Optional: Manage the dialog on component mount if necessary
-// onMounted(() => {
-//   if (loader.loading) {
-//     document.body.style.overflow = 'hidden'
-//     dialog.value?.showModal()
-//   }
-// })
 </script>
 
 <template>
-  <!-- <dialog ref="dialog">
-    <div class="dialogcontent">
-      <MyLoader />
-    </div>
-  </dialog> -->
   <header class="full-width" v-if="showHeaderAndFooter">
     <HeaderSection />
   </header>
@@ -59,18 +21,11 @@ const showHeaderAndFooter = computed(() => route.name !== 'auth')
   <footer class="full-width" v-if="showHeaderAndFooter">
     <FooterSection />
   </footer>
-  <!-- <div class="loading" v-show="loading">
-    <MyLoader />
-  </div> -->
 </template>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-.det::-webkit-scrollbar,
-.section::-webkit-scrollbar {
-  display: none;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
 :root {
   --gradient: linear-gradient(to left, #0000ff, #00ffff);
   --primary: rgba(99, 106, 232, 1);
