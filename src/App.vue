@@ -104,6 +104,9 @@ header {
   background-color: white;
   /* color: white; */
 }
+footer {
+  background-color: rgba(250, 250, 251, 1);
+}
 /* .section {
   scrollbar-width: none;
   -ms-overflow-style: none;

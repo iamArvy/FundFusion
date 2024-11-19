@@ -10,7 +10,9 @@
       :key="index"
       @click="changeNav(index)"
     >
-      {{ item }}
+      <i class="bx" :class="item.icon"></i>
+
+      {{ item.name }}
     </MainButton>
   </NavSection>
   <section id="hero" class="full-width">
@@ -24,8 +26,8 @@
     <ImageCard :src="item.img" :alt="item.name" v-for="(item, index) in gridItems" :key="index">
       <template #name>{{ item.name }}</template>
       <template #description
-        ><p>{{ item.category }}</p>
-        <p>{{ item.raised }}</p>
+        ><p>Category: {{ item.category }}</p>
+        <p>Raised: {{ item.raised }}</p>
         <MainButton transparent> Back the project </MainButton>
       </template>
     </ImageCard>
@@ -40,7 +42,17 @@ import GridSection from '@/components/Section/GridSection.vue'
 import NavSection from '@/components/Section/NavSection.vue'
 import { ref } from 'vue'
 
-const navs = ['Art', 'Environment', 'Technology', 'Education and Learning']
+const navs = [
+  { name: 'Featured', icon: 'bx-star' }, // A star icon for Featured items
+  { name: 'AI feature', icon: 'bx-brain' }, // A brain icon for AI-related features
+  { name: 'Redeem Reward', icon: 'bx-gift' }, // A gift icon for Redeem Reward
+  { name: 'Play-&-Earn', icon: 'bx-joystick' }, // A controller icon for Play-&-Earn
+  { name: 'Micro loans', icon: 'bx-credit-card' }, // A credit card icon for Micro Loans
+  { name: 'Game Hub', icon: 'bx-game' }, // A game icon for Game Hub
+  { name: 'Events', icon: 'bx-calendar' }, // A calendar icon for Events
+  { name: 'Competition', icon: 'bx-trophy' }, // A trophy icon for Competition
+  { name: 'Scholarships', icon: 'bx-bookmark' }, // A bookmark icon for Scholarships
+]
 
 const currentNav = ref(0)
 const changeNav = (index: number) => {
@@ -58,31 +70,31 @@ const gridItems = [
     name: 'Solar Car',
     category: 'Technology',
     raised: '$25,000 of $50,000',
-    img: '/featured/1.png',
+    img: '/featured/2.png',
   },
   {
     name: 'Solar Car',
     category: 'Technology',
     raised: '$25,000 of $50,000',
-    img: '/featured/1.png',
+    img: '/featured/3.png',
   },
   {
     name: 'Solar Car',
     category: 'Technology',
     raised: '$25,000 of $50,000',
-    img: '/featured/1.png',
+    img: '/featured/4.png',
   },
   {
     name: 'Solar Car',
     category: 'Technology',
     raised: '$25,000 of $50,000',
-    img: '/featured/1.png',
+    img: '/featured/5.png',
   },
   {
     name: 'Solar Car',
     category: 'Technology',
     raised: '$25,000 of $50,000',
-    img: '/featured/1.png',
+    img: '/featured/6.png',
   },
 ]
 </script>

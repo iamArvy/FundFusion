@@ -1,6 +1,6 @@
 <template>
   <form>
-    <div class="input">
+    <div class="input" :class="solid ? 'solid' : 'transparent'">
       <slot name="icon" /><input type="email" name="" id="" :placeholder="placeholder" />
     </div>
     <slot name="button" />
@@ -8,8 +8,12 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+
 defineProps<{
   placeholder: string
+  solid?: boolean
+  transparent?: boolean
 }>()
 </script>
 
@@ -31,16 +35,21 @@ input {
   flex: 1;
 }
 .input {
-  background-color: transparent;
-  border: 1px solid var(--secondary);
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-radius: 6px;
   padding: 5px;
   gap: 2px;
-  /* width: 100%; */
   flex: 1;
+}
+.transparent {
+  background-color: transparent;
+  border: 1px solid var(--secondary);
+  border-radius: 6px;
+}
+.solid {
+  background-color: var(--grey);
+  border-radius: 6px 0 0 6px;
 }
 input::placeholder {
   color: black;

@@ -33,6 +33,7 @@ button {
   border: none;
   /* font-size: 1rem; */
   font-weight: 400;
+  text-transform: capitalize;
 }
 
 .btn-primary {

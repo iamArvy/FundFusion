@@ -4,11 +4,13 @@
       <LogoImg />
       <span>FundFusion</span>
     </div>
-    <ul>
-      <li v-for="(item, index) in navs" :key="index">
-        <RouterLink :to="item.route">{{ item.name }}</RouterLink>
-      </li>
-    </ul>
+    <nav>
+      <RouterLink v-for="(item, index) in navs" :key="index" :to="item.route"
+        ><MainButton secondary :active="isRoute(item.route)"
+          ><i class="bx" :class="item.icon"></i><span> {{ item.name }}</span></MainButton
+        ></RouterLink
+      >
+    </nav>
     <div id="inputs">
       <!-- <SingleInput id="search" placeholder="Search">
         <template #icon>O</template>
@@ -19,17 +21,23 @@
 </template>
 
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
 import SingleInput from './Form/SingleInput.vue'
 import LogoImg from './LogoImg.vue'
+import MainButton from './MainButton.vue'
 
 const navs = [
-  { name: 'home', route: '/' },
-  { name: 'about us', route: '/about' },
-  { name: 'featured', route: '/featured' },
-  { name: 'projects', route: '/projects' },
-  { name: 'contact', route: '/contact' },
-  { name: 'blog', route: '/blog' },
+  { name: 'home', route: '/', icon: 'bx-home' },
+  { name: 'about us', route: '/about', icon: 'bx-info-circle' },
+  { name: 'featured', route: '/featured', icon: 'bx-cog' },
+  { name: 'projects', route: '/projects', icon: 'bx-layer' },
+  { name: 'contact', route: '/contact', icon: 'bx-envelope' },
+  { name: 'blog', route: '/blog', icon: 'bx-news' },
 ]
+
+const isRoute = (route: string) => {
+  return route === useRoute().path
+}
 </script>
 
 <style scoped>
@@ -41,9 +49,6 @@ img {
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-}
-#search {
-  /* width: 100px; */
 }
 #logo {
   display: flex;
@@ -58,15 +63,27 @@ img {
 section {
   padding: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 0.4fr 1fr 0.4fr;
 }
-ul {
+nav {
   text-transform: capitalize;
   display: flex;
   flex-direction: row;
   place-items: center;
-  justify-content: space-between;
-  color: var(--primary);
+  justify-content: space-evenly;
+  color: var(--secondary);
+  width: 100%;
   text-decoration: unset;
+  gap: 10px;
+}
+nav > a {
+  color: var(--secondary);
+}
+nav > a > button {
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
 }
 </style>
