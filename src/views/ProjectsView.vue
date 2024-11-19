@@ -93,6 +93,7 @@ const gridItems = [
 <style scoped>
 #grid > * {
   cursor: pointer;
+  text-transform: capitalize;
 }
 #grid > *:hover > * > * {
   color: var(--primary);

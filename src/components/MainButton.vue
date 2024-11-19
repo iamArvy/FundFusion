@@ -11,6 +11,7 @@ const props = defineProps<{
   secondary?: boolean
   transparent?: boolean
   active?: boolean
+  grid?: boolean
 }>()
 
 // Computed class for button based on props
@@ -21,6 +22,7 @@ const buttonClass = computed(() => {
     'btn-auth': props.auth,
     'btn-transparent': props.transparent,
     'btn-active': props.active,
+    'btn-grid': props.grid,
   }
 })
 </script>
@@ -82,4 +84,8 @@ button {
   border-bottom: 3px solid var(--secondary);
   border-radius: 5px;
 } */
+
+.btn-grid.btn-active {
+  color: var(--primary);
+}
 </style>
