@@ -13,9 +13,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "chart.js": "^4.4.6",
     "payaza-web-sdk": "^1.0.4",
     "swiper": "^11.1.15",
     "vue": "^3.5.12",
+    "vue-chartjs": "^5.3.2",
     "vue-router": "^4.4.5"
   },
   "devDependencies": {

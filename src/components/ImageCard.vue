@@ -1,5 +1,5 @@
 <template>
-  <figure>
+  <figure :class="long ? 'long' : 'short'">
     <img :src="src" :alt="alt" />
     <figcaption>
       <h2><slot name="name" /></h2>
@@ -14,6 +14,7 @@
 defineProps<{
   src: string
   alt?: string
+  long?: boolean
 }>()
 </script>
 
@@ -38,5 +39,10 @@ figcaption div {
   flex-direction: column;
   gap: 5px;
   margin: 5px 0;
+}
+.long {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 </style>

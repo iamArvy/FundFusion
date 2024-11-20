@@ -1,60 +1,52 @@
 <script setup lang="ts">
-import SectionComponent from '@/components/Section/SectionComponent.vue';
-import { ref } from 'vue';
-import MainButton from '@/components/MainButton.vue';
+import SectionComponent from '@/components/Section/SectionComponent.vue'
+import { ref } from 'vue'
+import MainButton from '@/components/MainButton.vue'
 
 const campaignDivs = [
   {
-    'header': 'support our vision',
-    'content': 'Join us in making a difference by funding our project. Every contribution counts!',
-    'button': 'Back this project'
+    header: 'support our vision',
+    content: 'Join us in making a difference by funding our project. Every contribution counts!',
+    button: 'Back this project',
   },
   {
-    'header': 'launch your campaign',
-    'content': 'Join thousands of creators and bring your ideas to life. Start your campaign today and make a difference.',
-    'button': 'Start a Campaign'
-  }
+    header: 'launch your campaign',
+    content:
+      'Join thousands of creators and bring your ideas to life. Start your campaign today and make a difference.',
+    button: 'Start a Campaign',
+  },
 ]
 
-const gallery = [
-  '/gallery/1.png',
-  '/gallery/2.png',
-  '/gallery/3.png'
-]
+const gallery = ['/gallery/1.png', '/gallery/2.png', '/gallery/3.png']
 
 const status = [
   'Funding Goal: $12,000',
   'Amount Raised: $11,645',
   'Percentage Funded: 97%',
-  'Countdown Timer: 20days'
+  'Countdown Timer: 20days',
 ]
 
 const supporterList = [
   {
-    'id': '001',
-    'name': 'Alice Johnson',
-    'amount': 500,
-    'comment': 'Happy to Help',
-    'action': 'view',
+    id: '001',
+    name: 'Alice Johnson',
+    amount: 500,
+    comment: 'Happy to Help',
+    action: 'view',
   },
   {
-    'id': '002',
-    'name': 'Bob Smith',
-    'amount': 300,
-    'comment': 'Great Support',
-    'action': 'thanks',
-  }
+    id: '002',
+    name: 'Bob Smith',
+    amount: 300,
+    comment: 'Great Support',
+    action: 'thanks',
+  },
 ]
 
-const campaignNavs = [
-  'Art',
-  'Environment',
-  'Technology',
-  'Education and Learning'
-]
+const campaignNavs = ['Art', 'Environment', 'Technology', 'Education and Learning']
 
-const currentCampaign = ref(0);
-const changeCampaign = (index:number) => {
+const currentCampaign = ref(0)
+const changeCampaign = (index: number) => {
   currentCampaign.value = index
 }
 </script>
@@ -75,7 +67,9 @@ const changeCampaign = (index:number) => {
     </SectionComponent>
     <SectionComponent header="project funding status" :center="true" id="status">
       <ul>
-        <li v-for="(item, index) in status" :key="index"><span>{{ item }}</span></li>
+        <li v-for="(item, index) in status" :key="index">
+          <span>{{ item }}</span>
+        </li>
       </ul>
     </SectionComponent>
     <SectionComponent
@@ -92,25 +86,37 @@ const changeCampaign = (index:number) => {
     </SectionComponent>
     <SectionComponent header="support list" :center="true" id="list">
       <table>
-        <th>
-          <td>Supporter ID</td>
-          <td>Name</td>
-          <td>Contribution Amount</td>
-          <td>Comment</td>
-          <td>Actions</td>
-        </th>
-        <tr v-for="(item,index) in supporterList" :key="index">
-          <td>{{ item.id }}</td>
-          <td>{{ item.name }}</td>
-          <td>${{ item.amount }}.00</td>
-          <td>{{ item.comment }}!</td>
-          <td><MainButton primary class="tbutton">{{ item.action }}</MainButton></td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Supporter ID</th>
+            <th>Name</th>
+            <th>Contribution Amount</th>
+            <th>Comment</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in supporterList" :key="index">
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>${{ item.amount }}.00</td>
+            <td>{{ item.comment }}!</td>
+            <td>
+              <MainButton primary class="tbutton">{{ item.action }}</MainButton>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </SectionComponent>
     <SectionComponent header="featured campaigns" center id="campaigns">
       <nav>
-        <MainButton secondary v-for="(nav, index) in campaignNavs" :key="index" :active="currentCampaign === index" @click="changeCampaign(index)">
+        <MainButton
+          secondary
+          v-for="(nav, index) in campaignNavs"
+          :key="index"
+          :active="currentCampaign === index"
+          @click="changeCampaign(index)"
+        >
           {{ nav }}
         </MainButton>
       </nav>
@@ -118,46 +124,46 @@ const changeCampaign = (index:number) => {
     <SectionComponent id="campaignDivs">
       <ul>
         <li v-for="(item, index) in campaignDivs" :key="index">
-        <h1>{{ item.header }}</h1>
-        <p>{{ item.content }}</p>
-        <MainButton primary>{{ item.button }}</MainButton>
+          <h1>{{ item.header }}</h1>
+          <p>{{ item.content }}</p>
+          <MainButton primary>{{ item.button }}</MainButton>
         </li>
       </ul>
     </SectionComponent>
   </main>
 </template>
 <style scoped>
-#gallery>div{
+#gallery > div {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
 }
-table{
+table {
   width: 100%;
   border: 1px solid var(--grey);
 }
-th{
+thead {
   background-color: var(--grey);
 }
-th, tr {
+tr {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   padding: 5px 0;
 }
-.tbutton{
+.tbutton {
   width: 70px;
   /* display: flex; */
   padding: 5px 5px;
   text-transform: capitalize;
 }
-#campaignDivs li{
+#campaignDivs li {
   display: flex;
   flex-direction: column;
   place-items: center;
   gap: 10px;
   margin: 3rem 0;
 }
-#campaignDivs h1{
+#campaignDivs h1 {
   text-transform: capitalize;
   color: var(--primary);
   font-size: 48px;

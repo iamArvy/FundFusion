@@ -12,7 +12,13 @@
     </NavSection>
   </SectionComponent>
   <GridSection id="grid">
-    <ImageCard :src="item.img" :alt="item.name" v-for="(item, index) in gridItems" :key="index">
+    <ImageCard
+      :src="item.img"
+      :alt="item.name"
+      v-for="(item, index) in gridItems"
+      :key="index"
+      @click="openProject()"
+    >
       <template #name>{{ item.name }}</template>
       <template #description
         ><p>{{ item.description }}</p></template
@@ -27,8 +33,12 @@ import MainButton from '@/components/MainButton.vue'
 import GridSection from '@/components/Section/GridSection.vue'
 import NavSection from '@/components/Section/NavSection.vue'
 import SectionComponent from '@/components/Section/SectionComponent.vue'
+import router from '@/router'
 import { ref } from 'vue'
 
+const openProject = () => {
+  router.push('/project')
+}
 const gridButtons = [
   { text: 'Art', value: 0 },
   { text: 'Technology', value: 1 },

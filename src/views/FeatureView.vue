@@ -1,6 +1,8 @@
 <template>
   <div id="search">
-    <SingleInput placeholder="Search campaigns..."></SingleInput>
+    <SingleInput placeholder="Search campaigns..."
+      ><template #icon><i class="bx bx-search-alt"></i></template
+    ></SingleInput>
   </div>
   <NavSection>
     <MainButton
